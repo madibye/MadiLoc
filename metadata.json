@@ -1,12 +1,12 @@
 {
 	"id": "BUMod",
-	"name": "Balatro University Mod",
-	"display_name": "Balatro University Mod",
-	"author": ["OceanRamen", "SleepyG11"],
-	"description": "The Official Balatro University language and textures Mod",
+	"name": "Madi's Language Mod",
+	"display_name": "Madi's Language Mod",
+	"author": ["Madi"],
+	"description": "The Official Madi language Mod",
 	"prefix": "bumod",
 	"main_file": "steamodded.lua",
 	"priority": 0,
-	"version": "1.2.0",
+	"version": "1.0.0",
 	"dependencies": []
 }

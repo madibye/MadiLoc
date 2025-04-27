@@ -64,160 +64,21 @@ function BUMod.table_merge(target, source, ...)
 end
 
 ---------
-
--- SMODS format
-BUMod.COLLABS = {
-	{
-		key = "balatro_clubs",
-		suit = "Clubs",
-		loc_txt = "Balatro",
-	},
-	{
-		key = "balatro_diamonds",
-		suit = "Diamonds",
-		loc_txt = "Balatro",
-	},
-	{
-		key = "balatro_hearts",
-		suit = "Hearts",
-		loc_txt = "Balatro",
-	},
-	{
-		key = "balatro_spades",
-		suit = "Spades",
-		loc_txt = "Balatro",
-	},
-	{
-		key = "sus_drs_clubs",
-		suit = "Clubs",
-		loc_txt = "Suspicious DrSpectred",
-	},
-	{
-		key = "sus_drs_diamonds",
-		suit = "Diamonds",
-		loc_txt = "Suspicious DrSpectred",
-	},
-	{
-		key = "sus_drs_hearts",
-		suit = "Hearts",
-		loc_txt = "Suspicious DrSpectred",
-	},
-	{
-		key = "sus_drs_spades",
-		suit = "Spades",
-		loc_txt = "Suspicious DrSpectred",
-	},
-	{
-		key = "v2_sus_drs_clubs",
-		suit = "Clubs",
-		loc_txt = "Suspicious DrSpectred V2",
-	},
-	{
-		key = "v2_sus_drs_diamonds",
-		suit = "Diamonds",
-		loc_txt = "Suspicious DrSpectred V2",
-	},
-	{
-		key = "v2_sus_drs_hearts",
-		suit = "Hearts",
-		loc_txt = "Suspicious DrSpectred V2",
-	},
-	{
-		key = "v2_sus_drs_spades",
-		suit = "Spades",
-		loc_txt = "Suspicious DrSpectred V2",
-	},
-}
-
--- Malverk format
-BUMod.CARDS = {
-	{
-		key = "joker_scholar_drspectred",
-		path = "single_jokers/j_scholar.png",
-		set = "Joker",
-		keys = { "j_scholar" },
-		loc_txt = {
-			name = "Scholar DrSpectred",
-			text = { "Replace Scholar with DrSpectred" },
-		},
-	},
-	{
-		key = "joker_showman_chip",
-		path = "single_jokers/j_ring_master.png",
-		set = "Joker",
-		keys = { "j_ring_master" },
-		loc_txt = {
-			name = "Showman Chip",
-			text = { "Replace Showman with Chip" },
-		},
-	},
-	{
-		key = "joker_space_zaino",
-		path = "single_jokers/j_space.png",
-		set = "Joker",
-		keys = { "j_space" },
-		loc_txt = {
-			name = "Spaceman Zaino",
-			text = { "Replace Spaceman with Zaino" },
-		},
-	},
-	{
-		key = "joker_duo_kitty_and_perkeo",
-		path = "single_jokers/j_duo.png",
-		set = "Joker",
-		keys = { "j_duo" },
-		loc_txt = {
-			name = "Kitty and Perkeo Duo",
-			text = { "Replace The Duo with Kitty and Perkeo" },
-		},
-	},
-	{
-		key = "joker_family_wingcap",
-		path = "single_jokers/j_family.png",
-		set = "Joker",
-		keys = { "j_family" },
-		loc_txt = {
-			name = "Wingcap's Family",
-			text = { "Replace The Family with Wingcap's Family" },
-		},
-	},
-	{
-		key = "joker_idol_stupid_cat",
-		path = "single_jokers/j_idol.png",
-		set = "Joker",
-		keys = { "j_idol" },
-		loc_txt = {
-			name = "Stupid's Cat Idol",
-			text = { "Replace The Idol with Stupid's Cat Idol" },
-		},
-	},
-	{
-		key = "tarot_hung_man",
-		path = "single_tarots/c_hanged_man.png",
-		set = "Tarot",
-		keys = { "c_hanged_man" },
-		loc_txt = {
-			name = "Hung Man",
-			text = { "Replace The Hanged Man with The Hung Man" },
-		},
-	},
-}
-
 ---------
 
 BUMod.language_buffer = nil
 function BUMod.get_localization()
-	return assert(loadstring(nativefs.read(BUMod.PATH .. "/loc_files/bu.lua")))()
+	return assert(loadstring(nativefs.read(BUMod.PATH .. "/loc_files/madi.lua")))()
 end
 function BUMod.setup_language()
-	G.LANGUAGES["bu"] = {
+	G.LANGUAGES["madi"] = {
 		font = 1,
-		label = "Balatro Uni",
-		key = "bu",
+		label = "Madi",
+		key = "madi",
 		beta = nil,
 		button = "Language Feedback",
 		warning = {
-			"This language is still in Beta.",
+			"This language is silly.",
 			"Click again to confirm",
 		},
 	}
@@ -228,7 +89,7 @@ function Game:set_language(...)
 	BUMod.language_buffer = G.SETTINGS.language
 
 	-- Load english localization if BU is selected
-	if G.SETTINGS.language == "bu" then
+	if G.SETTINGS.language == "madi" then
 		G.SETTINGS.language = "en-us"
 	end
 
@@ -237,14 +98,14 @@ end
 local init_localization_ref = init_localization
 function init_localization(...)
 	-- If initially loaded language is BU, select it
-	if BUMod.language_buffer == "bu" then
-		G.SETTINGS.language = "bu"
-		G.LANG = G.LANGUAGES["bu"]
+	if BUMod.language_buffer == "madi" then
+		G.SETTINGS.language = "madi"
+		G.LANG = G.LANGUAGES["madi"]
 	end
 	BUMod.language_buffer = nil
 
 	-- If current language is BU, apply it
-	if G.SETTINGS.language == "bu" then
+	if G.SETTINGS.language == "madi" then
 		G.localization = BUMod.table_merge({}, G.localization, BUMod.get_localization())
 	end
 	BUMod.setup_collabs_localization()
